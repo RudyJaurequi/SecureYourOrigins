@@ -4,7 +4,7 @@
 This project demonstrates comprehensive security implementations for various origin types (S3, Custom Origins, ALB) behind Amazon CloudFront. It focuses on implementing best practices for securing origin access while maintaining high availability and performance.
 
 ## Architecture Diagram
-![Secure Origins Architecture](images/secure-origins-arch.png)
+![Secure Origins Architecture](BadActor.png)
 
 ## Architecture Components
 
