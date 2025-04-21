@@ -33,73 +33,19 @@ This project demonstrates comprehensive security implementations for various ori
 - SSL/TLS encryption
 - WAF protection rules
 
-## High Availability Features
-- Multi-region origin support
-- Origin failover configuration
-- Origin shield implementation
-- Cache optimization
-- Error handling and custom error pages
-
-## Monitoring and Logging
-- CloudWatch metrics
-- Access logs analysis
-- Origin health monitoring
-- Security event logging
-- Real-time alerts
-
 ## Implementation Steps
 
 ### 1. CloudFront Setup
-```yaml
-CloudFrontDistribution:
-  Type: 'AWS::CloudFront::Distribution'
-  Properties:
-    DistributionConfig:
-      Origins:
-        - DomainName: !Sub '${OriginBucket}.s3.amazonaws.com'
-          Id: S3Origin
-          OriginAccessControlId: !Ref CloudFrontOAC
-```
+
 
 ### 2. S3 Origin Security
-```yaml
-OriginBucket:
-  Type: 'AWS::S3::Bucket'
-  Properties:
-    PublicAccessBlockConfiguration:
-      BlockPublicAcls: true
-      BlockPublicPolicy: true
-      IgnorePublicAcls: true
-      RestrictPublicBuckets: true
-```
+
 
 ### 3. Custom Origin Security
-```yaml
-SecurityGroup:
-  Type: 'AWS::EC2::SecurityGroup'
-  Properties:
-    SecurityGroupIngress:
-      - IpProtocol: tcp
-        FromPort: 443
-        ToPort: 443
-        CidrIp: !Ref CloudFrontIPRange
-```
+
 
 ### 4. WAF Configuration
-```yaml
-WebACL:
-  Type: 'AWS::WAFv2::WebACL'
-  Properties:
-    DefaultAction:
-      Allow: {}
-    Rules:
-      - Name: BlockUnwantedRequests
-        Priority: 1
-        Statement:
-          RateBasedStatement:
-            Limit: 2000
-            AggregateKeyType: IP
-```
+
 
 ## Best Practices Implemented
 - Origin access restriction
@@ -109,11 +55,7 @@ WebACL:
 - Automated deployment
 
 ## Tools and Services Used
-- AWS CloudFormation
-- AWS CLI
-- AWS SDK
-- Terraform (optional)
-- Monitoring tools
+
 
 ## Future Enhancements
 - [ ] Lambda@Edge integration
@@ -124,32 +66,12 @@ WebACL:
 
 ## Security Patterns
 
+
 ### S3 Origin Pattern
-```yaml
-# S3 bucket with OAC
-Resources:
-  CloudFrontOAC:
-    Type: 'AWS::CloudFront::OriginAccessControl'
-    Properties:
-      OriginAccessControlConfig:
-        Name: !Sub ${AWS::StackName}-OAC
-        OriginAccessControlOriginType: s3
-        SigningBehavior: always
-        SigningProtocol: sigv4
-```
+
 
 ### Custom Origin Pattern
-```yaml
-# Custom origin with header authentication
-Origins:
-  - DomainName: api.example.com
-    Id: CustomOrigin
-    CustomOriginConfig:
-      OriginProtocolPolicy: https-only
-    OriginCustomHeaders:
-      - HeaderName: X-Origin-Auth
-        HeaderValue: !Ref SecretHeader
-```
+
 
 ## Resources and References
 - [CloudFront Documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
@@ -157,9 +79,7 @@ Origins:
 - [Origin Access Control](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html)
 
 ## Author
-- **Name**: [Your Name]
-- **LinkedIn**: [Your LinkedIn]
-- **GitHub**: [Your GitHub]
+- **Name**: Rudy Jaurequi
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
